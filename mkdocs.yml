@@ -1,0 +1,102 @@
+site_name: JetCo Docs
+# site_url: https://github.com/developerchunk/jetco
+repo_url: https://github.com/developerchunk/jetco
+repo_name: developerchunk/jetco
+
+nav:
+  - Home: index.md
+  - Guide:
+    - JetCo-UI:
+      - Overview: guide/jetco-ui/jetco-ui.md
+      - Bar Charts:
+        - charts:
+          - Column Bar Chart: guide/jetco-ui/Bar Chart/ColumnBarChart.md
+          - Extended Column Bar Chart: guide/jetco-ui/Bar Chart/ExtendedColumnBarChart.md
+          - Group Column Bar Chart: guide/jetco-ui/Bar Chart/GroupColumnBarChart.md
+        - Configuration:
+          - Config: guide/jetco-ui/Bar Chart/config/BarChartConfig.md
+          - Defaults: guide/jetco-ui/Bar Chart/config/BarChartDefaults.md
+        - Components: guide/jetco-ui/Bar Chart/components.md
+        - Models: guide/jetco-ui/Bar Chart/models.md
+      - Pie Chart:
+        - Pie Chart: guide/jetco-ui/Pie Chart/PieChart.md
+        - Configurations: guide/jetco-ui/Pie Chart/PieChartConfigurations.md
+        - Defaults: guide/jetco-ui/Pie Chart/PieChartDefaults.md
+  - Sample: sample/jetco-ui.md
+  - Community: community.md
+  - License: License.md
+
+theme:
+  name: material
+  features:
+    - toc.integrate
+    - content.tabs.link
+    - tabs
+    - navigation.tabs
+    - navigation.sections
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+    - content.code.select
+  language: en
+  palette:
+    - scheme: dark
+      toggle:
+        icon: material/toggle-switch-off-outline 
+        name: Switch to dark mode
+    - scheme: slate 
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode    
+
+plugins:
+  # - social
+  - search
+  
+
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/developerchunk
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/DeveloperChunk
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/adityashinde1095/
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - admonition
+  - codehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  # for right side table of content
+  # - pymdownx.tabbed:
+  #     slugify: !!python/object/apply:pymdownx.slugs.slugify
+  #       kwds:
+  #         case: lower
+  # - pymdownx.emoji:
+  #     emoji_index: !!python/name:materialx.emoji.twemoji
+  #     emoji_generator: !!python/name:materialx.emoji.to_svg
+
+copyright: |
+  &copy; 2024 <a href="https://github.com/developerchunk/JetCo?tab=Apache-2.0-1-ov-file#readme"  target="_blank" rel="noopener">Developer Chunk</a>
