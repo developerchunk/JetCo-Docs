@@ -1,7 +1,7 @@
 site_name: JetCo Docs
 # site_url: https://github.com/developerchunk/jetco
-repo_url: https://github.com/developerchunk/jetco
-repo_name: developerchunk/jetco
+repo_url: https://github.com/developerchunk/JetCo-Docs
+repo_name: developerchunk/JetCo-Docs
 
 nav:
   - Home: index.md
