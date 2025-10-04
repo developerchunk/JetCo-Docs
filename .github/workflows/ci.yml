@@ -20,4 +20,12 @@ jobs:
           path: .cache
       - run: pip install mkdocs-material
       - run: pip install pillow cairosvg
-      - run: mkdocs gh-deploy --force --remote-branch gh-pages
+      - run: mkdocs build
+      - run: cp -r _site/* .
+      - run: rm -rf _site docs .github mkdocs.yml requirements.txt || true
+      - run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add .
+          git commit -m "Deploy documentation" || exit 0
+          git push origin HEAD:gh-pages --force
