@@ -110,8 +110,8 @@ Check out the examples below to see JetCo in action!
 
 Want to get started right away? We've got your back! 🏃‍♂️ Head over to the [Sample](/sample/jetco-ui) section for installation instructions, sample code, and to see how easy it is to integrate JetCo components. You’ll be building gorgeous UIs in no time! ⏱
 
-### 🧭 Need a guide?   
-If you prefer more guidance, check out our [Guide](/guide/jetco-ui) section for tips, tricks, and in-depth customization details.
+## 🧭 Need a guide?   
+If you prefer more guidance, check out our [Guide](/guide/jetco-ui/jetco-ui) section for tips, tricks, and in-depth customization details.
 
 ---
 
@@ -125,7 +125,7 @@ No matter if you’re working on a personal project or building the next unicorn
 
 ---
 
-For more details on how to make the most out of JetCo, dive into our [Sample](/sample/jetco-ui) and [Guide](/guide/jetco-ui) sections.
+For more details on how to make the most out of JetCo, dive into our [Sample](/sample/jetco-ui) and [Guide](/guide/jetco-ui/jetco-ui) sections.
 
 ---
 
