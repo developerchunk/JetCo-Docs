@@ -378,4 +378,255 @@ fun PopUpLayout(text: String) {
 </div>
 
 ---
-These examples show how easily JetCo UI components can be integrated into your project. For any `assistance` | `questions` | `queries` | `help` please follow the instruction on the `Community` Section
+These examples show how easily JetCo UI components can be integrated into your project. 
+
+---
+
+## **TicketCard Component**
+
+The TicketCard component creates beautiful ticket-style cards with authentic cutout notches and dashed dividers.
+
+```kotlin
+import com.developerstring.jetco.ui.cards.ticket.TicketCard
+import com.developerstring.jetco.ui.cards.ticket.TicketContent
+import com.developerstring.jetco.ui.cards.ticket.TicketCardCorner
+
+@Composable
+fun TicketCardSample() {
+    TicketCard(
+        modifier = Modifier
+            .width(280.dp)
+            .height(400.dp),
+        cornerRadius = TicketCardCorner(
+            topLeft = 20.dp,
+            topRight = 20.dp,
+            bottomLeft = 20.dp,
+            bottomRight = 20.dp
+        ),
+        cardColor = Color(0xFFF5F5F5),
+        notchRadius = 30.dp,
+        dividerColor = Color(0xFF757575)
+    ) {
+        TicketContent(
+            topContent = {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(20.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "CONCERT TICKET",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "The Amazing Band",
+                        fontSize = 16.sp
+                    )
+                    Text(
+                        text = "December 25, 2024 • 8:00 PM",
+                        fontSize = 14.sp,
+                        color = Color.Gray
+                    )
+                }
+            },
+            bottomContent = {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(20.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "ADMIT ONE",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = "Seat A-12 • Gate 3",
+                        fontSize = 12.sp,
+                        color = Color.Gray
+                    )
+                }
+            }
+        )
+    }
+}
+```
+
+---
+
+## **VerticalStepper Component**
+
+The VerticalStepper component creates a vertical timeline perfect for order tracking, onboarding flows, and step-by-step processes.
+
+```kotlin
+import com.developerstring.jetco.ui.components.stepper.VerticalStepper
+import com.developerstring.jetco.ui.components.stepper.model.StepperNode
+import com.developerstring.jetco.ui.components.stepper.model.StepperStatus
+import com.developerstring.jetco.ui.components.stepper.model.StepperConfig
+import com.developerstring.jetco.ui.components.stepper.model.StepperActionIcons
+
+@Composable
+fun VerticalStepperSample() {
+    val steps = listOf(
+        StepperNode(
+            title = "Order Placed",
+            description = "Your order has been successfully placed",
+            icon = Icons.Default.ShoppingCart,
+            status = StepperStatus.COMPLETE
+        ),
+        StepperNode(
+            title = "Processing",
+            description = "We're preparing your order",
+            icon = Icons.Default.Build,
+            status = StepperStatus.COMPLETE
+        ),
+        StepperNode(
+            title = "Shipped",
+            description = "Your order is on the way",
+            icon = Icons.Default.LocalShipping,
+            status = StepperStatus.ACTIVE
+        ),
+        StepperNode(
+            title = "Delivered",
+            description = "Package will be delivered soon",
+            icon = Icons.Default.Home,
+            status = StepperStatus.IDLE
+        )
+    )
+
+    VerticalStepper(
+        steps = steps,
+        config = StepperConfig(
+            node = StepperConfig.NodeStyle(
+                activeColor = Color(0xFF2196F3),
+                completedColor = Color(0xFF4CAF50),
+                size = 36.dp
+            )
+        ),
+        onStepClick = { index ->
+            // Handle step click
+            println("Clicked step: $index")
+        }
+    )
+}
+```
+
+---
+
+## **HorizontalStepper Component**
+
+The HorizontalStepper component displays progress horizontally, perfect for wizards and checkout processes.
+
+```kotlin
+import com.developerstring.jetco.ui.components.stepper.HorizontalStepper
+
+@Composable
+fun HorizontalStepperSample() {
+    val checkoutSteps = listOf(
+        StepperNode(
+            title = "Cart",
+            icon = Icons.Default.ShoppingCart,
+            status = StepperStatus.COMPLETE
+        ),
+        StepperNode(
+            title = "Shipping",
+            icon = Icons.Default.LocalShipping,
+            status = StepperStatus.COMPLETE
+        ),
+        StepperNode(
+            title = "Payment",
+            icon = Icons.Default.Payment,
+            status = StepperStatus.ACTIVE
+        ),
+        StepperNode(
+            title = "Review",
+            icon = Icons.Default.Preview,
+            status = StepperStatus.IDLE
+        )
+    )
+
+    HorizontalStepper(
+        steps = checkoutSteps,
+        showLabels = true,
+        config = StepperConfig(
+            node = StepperConfig.NodeStyle(
+                horizontalStepperWidth = 100.dp,
+                size = 32.dp
+            )
+        ),
+        onStepClick = { index ->
+            // Navigate to step
+        }
+    )
+}
+```
+
+---
+
+## **CompactHorizontalStepper Component**
+
+The CompactHorizontalStepper provides a space-efficient horizontal progress indicator without labels.
+
+```kotlin
+import com.developerstring.jetco.ui.components.stepper.CompactHorizontalStepper
+
+@Composable
+fun CompactHorizontalStepperSample() {
+    val progressSteps = listOf(
+        StepperNode(status = StepperStatus.COMPLETE),
+        StepperNode(status = StepperStatus.COMPLETE),
+        StepperNode(status = StepperStatus.ACTIVE),
+        StepperNode(status = StepperStatus.IDLE),
+        StepperNode(status = StepperStatus.IDLE)
+    )
+
+    CompactHorizontalStepper(
+        steps = progressSteps,
+        config = StepperConfig(
+            node = StepperConfig.NodeStyle(
+                size = 24.dp,
+                activeColor = MaterialTheme.colorScheme.primary,
+                completedColor = MaterialTheme.colorScheme.primary,
+                inactiveColor = MaterialTheme.colorScheme.outline
+            ),
+            connector = StepperConfig.ConnectorStyle(
+                width = 2.dp,
+                spacing = 8.dp
+            )
+        ),
+        onStepClick = { index ->
+            // Update progress
+        }
+    )
+}
+```
+
+!!! info annotate "Component Customization"
+    All JetCo components support extensive customization through configuration classes. 
+    The examples above show basic usage - check the Guide section for advanced customization options,
+    including animations, custom icons, themes, and responsive behavior.
+
+<div class="image-grid">
+  <div class="image-container">
+    <img src="https://github.com/developerchunk/JetCo/blob/main/assets/images/ticket_card.png?raw=true" alt="TicketCard Component"/>
+    <p>TicketCard</p>
+  </div>
+  <div class="image-container">
+    <img src="https://github.com/developerchunk/JetCo/blob/main/assets/images/vertical-stepper.png?raw=true" alt="VerticalStepper Component"/>
+    <p>VerticalStepper</p>
+  </div>
+  <div class="image-container">
+    <img src="https://github.com/developerchunk/JetCo/blob/main/assets/images/horizontal-stepper.png?raw=true" alt="HorizontalStepper Component"/>
+    <p>HorizontalStepper & CompactHorizontalStepper</p>
+  </div>
+</div>
+
+---
+
+For any `assistance` | `questions` | `queries` | `help` please follow the instruction on the `Community` Section

@@ -1,6 +1,9 @@
-# **Overview**
+# Overview 🎉 Key Features
 
-Welcome to the **JetCo** library documentation! JetCo is your ultimate **Open-Source** partner for crafting visually stunning, interactive, and efficient UI components in Android apps. 💡 Designed specifically for Jetpack Compose enthusiasts, JetCo is here to make your life easier, your apps prettier, and your users happier. 😊
+- 🖌 **Modern UI Components:** Bring your app to life with sleek charts, ticket cards, steppers, and more!
+- ⚡️ **Seamless Jetpack Compose Integration:** Say goodbye to compatibility nightmares, JetCo works flawlessly with Jetpack Compose.
+- 🛠 **Customization Galore:** Tweak and fine-tune every element to fit your design like a glove. 
+- 🚀 **Performance Optimized:** Fast and lightweight, JetCo handles big data with ease (so your app doesn't cry under pressure 🥲).lcome to the **JetCo** library documentation! JetCo is your ultimate **Open-Source** partner for crafting visually stunning, interactive, and efficient UI components in Android apps. 💡 Designed specifically for Jetpack Compose enthusiasts, JetCo is here to make your life easier, your apps prettier, and your users happier. 😊
 
 <a href="https://github.com/DeveloperChunk/JetCo" target="_blank" rel="noopener noreferrer">![GitHub release (latest by date)](https://img.shields.io/github/v/release/developerchunk/jetco?label=GitHub)</a> <a href="https://search.maven.org/artifact/com.developerstring.jetco/ui/" target="_blank" rel="noopener noreferrer">![Maven Central](https://img.shields.io/maven-central/v/com.developerstring.jetco/ui.svg?label=Maven%20Central)</a>
 
@@ -21,14 +24,18 @@ JetCo is your go-to library for effortlessly adding complex yet elegant UI compo
 
 ## 📊 **Supported UI Components**
 
-JetCo currently offers a growing lineup of snazzy chart components to make your UI pop:
+JetCo currently offers a growing lineup of snazzy UI components to make your app stand out:
 
-| 🧁 Component            | 🍭 Description                                                   |
-|------------------------|------------------------------------------------------------------|
-| **Pie Chart**           | Slice and dice your data into a tasty pie chart format. 🥧        |
-| **Column Bar Chart**    | Perfect for showing data as bars with full customization. 📊      |
-| **Extended Column Bar Chart** | Need more power? Extend that bar chart with extra goodies! 🔥 |
-| **Group Column Bar Chart** | Compare multiple data sets side by side in grouped bars. 🤓    |
+| 🧁 Component                  | 🍭 Description                                                                                 |
+| ----------------------------- | -------------------------------------------------------------------------------------------- |
+| **Pie Chart**                 | Slice and dice your data into a tasty pie chart format. 🥧                                   |
+| **Column Bar Chart**          | Perfect for showing data as bars with full customization. 📊                                 |
+| **Extended Column Bar Chart** | Take your bar charts to the next level with advanced features. 🔥                            |
+| **Group Column Bar Chart**    | Compare multiple data sets side by side. 🤓                                                  |
+| **TicketCard**                | Custom ticket-style card with cutout arcs, dashed dividers, and flexible slots. 🎟️          |
+| **VerticalStepper**           | A vertical timeline/stepper with titles, descriptions, and optional images in each node. ⬇️ |
+| **HorizontalStepper**         | A clean and simple horizontal stepper for progress or timeline representation. ➡️           |
+| **CompactHorizontalStepper**  | A minimal, icon-only horizontal stepper for compact UIs (great for mobile). ⚡               |
 
 Check out the examples below to see JetCo in action!
 
@@ -87,6 +94,18 @@ Check out the examples below to see JetCo in action!
   <div class="image-container">
     <img src="https://github.com/developerchunk/JetCo/blob/main/assets/images/4.jpg?raw=true" alt="Group Column Bar Chart"/>
     <p>Group Column Bar Chart</p>
+  </div>
+  <div class="image-container">
+    <img src="https://github.com/developerchunk/JetCo/blob/main/assets/images/ticket_card.png?raw=true" alt="TicketCard"/>
+    <p>TicketCard</p>
+  </div>
+  <div class="image-container">
+    <img src="https://github.com/developerchunk/JetCo/blob/main/assets/images/vertical-stepper.png?raw=true" alt="VerticalStepper"/>
+    <p>VerticalStepper</p>
+  </div>
+  <div class="image-container">
+    <img src="https://github.com/developerchunk/JetCo/blob/main/assets/images/horizontal-stepper.png?raw=true" alt="HorizontalStepper"/>
+    <p>HorizontalStepper & CompactHorizontalStepper</p>
   </div>
 </div>
 

@@ -22,6 +22,17 @@ nav:
         - Pie Chart: guide/jetco-ui/Pie Chart/PieChart.md
         - Configurations: guide/jetco-ui/Pie Chart/PieChartConfigurations.md
         - Defaults: guide/jetco-ui/Pie Chart/PieChartDefaults.md
+      - Ticket Card:
+        - Overview: guide/jetco-ui/Ticket Card/TicketCard.md
+        - Components: guide/jetco-ui/Ticket Card/TicketContent.md
+        - Models: guide/jetco-ui/Ticket Card/TicketCardCorner.md
+      - Steppers:
+        - Vertical Stepper: guide/jetco-ui/Steppers/VerticalStepper.md
+        - Horizontal Stepper: guide/jetco-ui/Steppers/HorizontalStepper.md
+        - Compact Horizontal Stepper: guide/jetco-ui/Steppers/CompactHorizontalStepper.md
+        - Configuration:
+          - Stepper Config: guide/jetco-ui/Steppers/config/StepperConfig.md
+          - Stepper Models: guide/jetco-ui/Steppers/config/StepperModels.md
   - Sample: sample/jetco-ui.md
   - Community: community.md
   - License: License.md
