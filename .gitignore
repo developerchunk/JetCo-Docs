@@ -1,11 +1,14 @@
 # MkDocs build files (built to root directory)
-_site/
 *.html
 search/
 assets/
 sitemap.xml
 sitemap.xml.gz
 404.html
+guide/
+sample/
+community/
+License/
 
 # Python cache
 __pycache__/

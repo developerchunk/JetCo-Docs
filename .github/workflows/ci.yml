@@ -20,12 +20,27 @@ jobs:
           path: .cache
       - run: pip install mkdocs-material
       - run: pip install pillow cairosvg
-      - run: mkdocs build
-      - run: cp -r _site/* .
-      - run: rm -rf _site docs .github mkdocs.yml requirements.txt || true
       - run: |
+          # Create temporary backup of source files
+          mkdir -p /tmp/mkdocs-backup
+          cp -r docs/ mkdocs.yml /tmp/mkdocs-backup/
+          
+          # Build to temporary directory first
+          mkdocs build --site-dir /tmp/mkdocs-build
+          
+          # Clear current directory (keep .git and source in backup)
+          find . -maxdepth 1 -not -name '.git' -not -name '.' -not -name '..' -exec rm -rf {} \;
+          
+          # Copy built files to current directory
+          cp -r /tmp/mkdocs-build/* .
+          
+          # Restore essential files
+          cp /tmp/mkdocs-backup/mkdocs.yml .
+          cp -r /tmp/mkdocs-backup/docs .
+          
+          # Configure git and deploy
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add .
-          git commit -m "Deploy documentation" || exit 0
+          git commit -m "Deploy documentation to root directory" || exit 0
           git push origin HEAD:gh-pages --force
