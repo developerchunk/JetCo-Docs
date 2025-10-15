@@ -43,17 +43,19 @@ Integrate the **JetCo-UI Library** into your project, get sample code snippets f
 
 ## **Adding JetCo-UI Library Dependency**
 
-To start using the JetCo-UI library in your Jetpack Compose project, follow these steps to add the dependency:
+To start using the JetCo-UI library in your project, follow these steps to add the dependency:
+
+### Android (Jetpack Compose)
 <a href="https://search.maven.org/artifact/com.developerstring.jetco/ui/" target="_blank" rel="noopener noreferrer">![Maven Central](https://img.shields.io/maven-central/v/com.developerstring.jetco/ui.svg?label=Maven%20Central)</a>
 
-=== "Kotlin DSL Version Catelog"
+=== "Kotlin DSL Version Catalog"
     ```kotlin
     // add the library in libs.versions.toml
     [versions]
-    ui = "<latest-version>" // jetco-ui version
+    jetco-ui = "<latest-version>" // jetco-ui version
 
     [libraries]
-    jetco-ui = { module = "com.developerstring.jetco:ui", version.ref = "ui" }
+    jetco-ui = { module = "com.developerstring.jetco:ui", version.ref = "jetco-ui" }
 
     // now implement in build.gradle.kts
     implementation(libs.jetco.ui)
@@ -65,8 +67,8 @@ To start using the JetCo-UI library in your Jetpack Compose project, follow thes
     dependencies {
         implementation("com.developerstring.jetco:ui:<latest-version>")
     }
-    
     ```
+
 === "Groovy"
     ```groovy
     // implement in build.gradle
@@ -75,7 +77,37 @@ To start using the JetCo-UI library in your Jetpack Compose project, follow thes
     }
     ```
 
-!!! info annotate "Replace `<latest-version>` with the latest version of the library from <a href="https://github.com/DeveloperChunk/JetCo" target="_blank" rel="noopener noreferrer">![GitHub release (latest by date)](https://img.shields.io/github/v/release/developerchunk/jetco?label=GitHub)</a>."
+### Kotlin Multiplatform (KMP)
+<a href="https://central.sonatype.com/artifact/com.developerstring.jetco-kmp/ui" target="_blank" rel="noopener noreferrer">![Maven Central KMP](https://img.shields.io/badge/Maven%20Central-1.0.0--beta.8-blue?logo=apache-maven)</a>
+
+=== "Kotlin DSL Version Catalog"
+    ```kotlin
+    // add the library in libs.versions.toml
+    [versions]
+    jetco-kmp-ui = "1.0.0-beta.8" // jetco-kmp-ui version
+
+    [libraries]
+    jetco-kmp-ui = { module = "com.developerstring.jetco-kmp:ui", version.ref = "jetco-kmp-ui" }
+
+    // now implement in build.gradle.kts (in commonMain dependencies)
+    commonMain.dependencies {
+        implementation(libs.jetco.kmp.ui)
+    }
+    ```
+
+=== "Kotlin DSL"
+    ```kotlin
+    // implementation in build.gradle.kts
+    kotlin {
+        sourceSets {
+            commonMain.dependencies {
+                implementation("com.developerstring.jetco-kmp:ui:1.0.0-beta.8")
+            }
+        }
+    }
+    ```
+
+!!! info annotate "**Android Version:** Replace `<latest-version>` with the latest version from <a href="https://github.com/DeveloperChunk/JetCo" target="_blank" rel="noopener noreferrer">![GitHub release (latest by date)](https://img.shields.io/github/v/release/developerchunk/jetco?label=GitHub)</a><br>**KMP Version:** Currently at `1.0.0-beta.8` - check <a href="https://central.sonatype.com/artifact/com.developerstring.jetco-kmp/ui" target="_blank" rel="noopener noreferrer">Maven Central</a> for updates."
 
 ---
 
@@ -460,6 +492,173 @@ fun TicketCardSample() {
 
 ---
 
+## **CurvedCard Component**
+
+The CurvedCard component creates elegant curved cards with wave animations and customizable backgrounds, perfect for hero sections and interactive displays.
+
+=== "Android"
+    ```kotlin
+    import com.developerstring.jetco.ui.cards.curved.CurvedCard
+    import com.developerstring.jetco.ui.cards.curved.CurvedCardConfig
+    import com.developerstring.jetco.ui.cards.curved.CurvedCardAnimConfig
+    ```
+
+=== "KMP"
+    ```kotlin
+    import com.developerstring.jetco_kmp.cards.curved.CurvedCard
+    import com.developerstring.jetco_kmp.cards.curved.CurvedCardConfig
+    import com.developerstring.jetco_kmp.cards.curved.CurvedCardAnimConfig
+    ```
+
+```kotlin
+@Composable
+fun CurvedCardSample() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        // Simple Gradient CurvedCard
+        CurvedCard(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(120.dp),
+            config = CurvedCardConfig(
+                shape = RoundedCornerShape(20.dp),
+                gradient = Brush.horizontalGradient(
+                    listOf(
+                        Color(0xFF8EC8FF),
+                        Color(0xFFFFC77A)
+                    )
+                )
+            )
+        ) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "You saved ₹31 with Gold",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = Color.White
+                )
+            }
+        }
+
+        // Animated CurvedCard with Image Background
+        CurvedCard(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(150.dp),
+            config = CurvedCardConfig(
+                image = ImageBitmap.imageResource(R.drawable.background_image),
+                shape = RoundedCornerShape(20.dp),
+                bottomCurveEnable = true,
+                topCurveEnable = false,
+                imageAlpha = 0.8f,
+                waveHeight = 15.dp
+            ),
+            animConfig = CurvedCardAnimConfig(
+                animateBottomWave = true,
+                reverseAnimationBottom = true,
+                animationDurationMs = 2500
+            )
+        ) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Image background with animation",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = Color.White,
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
+
+        // Dynamic Text CurvedCard
+        CurvedCard(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(180.dp),
+            config = CurvedCardConfig(
+                gradient = Brush.linearGradient(
+                    colors = listOf(
+                        Color(0xFF667eea),
+                        Color(0xFF764ba2)
+                    )
+                ),
+                shape = RoundedCornerShape(16.dp),
+                bottomCurveEnable = true,
+                topCurveEnable = true,
+                waveHeight = 12.dp,
+                waveSegments = 4
+            ),
+            animConfig = CurvedCardAnimConfig(
+                animateTopWave = true,
+                animateBottomWave = true,
+                reverseAnimationTop = true,
+                reverseAnimationBottom = false,
+                animationDurationMs = 3000
+            )
+        ) {
+            val textList = listOf(
+                "Hello Developers! 🎉",
+                "Welcome to JetCo! ❤️",
+                "Beautiful UI Components ⭐",
+                "Happy Coding! 🚀"
+            )
+
+            var currentTextIndex by remember { mutableIntStateOf(0) }
+
+            LaunchedEffect(textList.size) {
+                while (true) {
+                    delay(2000)
+                    currentTextIndex = (currentTextIndex + 1) % textList.size
+                }
+            }
+
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                AnimatedContent(
+                    targetState = currentTextIndex,
+                    transitionSpec = {
+                        ContentTransform(
+                            targetContentEnter = slideInVertically(
+                                animationSpec = tween(500),
+                                initialOffsetY = { it }
+                            ),
+                            initialContentExit = slideOutVertically(
+                                animationSpec = tween(500),
+                                targetOffsetY = { -it }
+                            )
+                        )
+                    },
+                    label = "text_animation"
+                ) { index ->
+                    Text(
+                        text = textList[index],
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Medium,
+                        color = Color.White,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                }
+            }
+        }
+    }
+}
+```
+
+---
+
 ## **VerticalStepper Component**
 
 The VerticalStepper component creates a vertical timeline perfect for order tracking, onboarding flows, and step-by-step processes.
@@ -618,12 +817,24 @@ fun CompactHorizontalStepperSample() {
     <p>TicketCard</p>
   </div>
   <div class="image-container">
+    <img src="https://raw.githubusercontent.com/developerchunk/JetCo/refs/heads/main/assets/images/curvedCard-1.png" alt="CurvedCard Component"/>
+    <p>CurvedCard</p>
+  </div>
+  <div class="image-container">
+    <img src="https://raw.githubusercontent.com/developerchunk/JetCo/refs/heads/main/assets/images/curvedCard-2.gif" alt="CurvedCard Animation"/>
+    <p>CurvedCard Animation</p>
+  </div>
+  <div class="image-container">
     <img src="https://github.com/developerchunk/JetCo/blob/main/assets/images/vertical-stepper.png?raw=true" alt="VerticalStepper Component"/>
     <p>VerticalStepper</p>
   </div>
   <div class="image-container">
-    <img src="https://github.com/developerchunk/JetCo/blob/main/assets/images/horizontal-stepper.png?raw=true" alt="HorizontalStepper Component"/>
-    <p>HorizontalStepper & CompactHorizontalStepper</p>
+    <img src="https://raw.githubusercontent.com/developerchunk/JetCo/refs/heads/main/assets/images/HorizontalStepper.png" alt="HorizontalStepper Component"/>
+    <p>HorizontalStepper</p>
+  </div>
+  <div class="image-container">
+    <img src="https://raw.githubusercontent.com/developerchunk/JetCo/refs/heads/main/assets/images/CompactHorizontalStepper.png" alt="CompactHorizontalStepper Component"/>
+    <p>CompactHorizontalStepper</p>
   </div>
 </div>
 

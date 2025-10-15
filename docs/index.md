@@ -1,9 +1,16 @@
 # JetCo Library
 
 ## **Latest Versions**
-<a href="https://github.com/DeveloperChunk/JetCo" target="_blank" rel="noopener noreferrer">![GitHub release (latest by date)](https://img.shields.io/github/v/release/developerchunk/jetco?label=GitHub)</a> <a href="https://search.maven.org/artifact/com.developerstring.jetco/ui/" target="_blank" rel="noopener noreferrer">![Maven Central](https://img.shields.io/maven-central/v/com.developerstring.jetco/ui.svg?label=Maven%20Central)</a>
 
-JetCo is your go-to library for effortlessly adding complex yet elegant UI components into your Android apps. ✨ Forget the headaches of custom implementations — JetCo’s got your back with everything from beautiful charts to customizable components, all in just a few lines of code. 💻 
+| **Android (Jetpack Compose)** | **Kotlin Multiplatform (KMP)** |
+|---|---|
+| <a href="https://search.maven.org/artifact/com.developerstring.jetco/ui/" target="_blank" rel="noopener noreferrer">![Maven Central](https://img.shields.io/maven-central/v/com.developerstring.jetco/ui.svg?label=Maven%20Central)</a> | <a href="https://central.sonatype.com/artifact/com.developerstring.jetco-kmp/ui" target="_blank" rel="noopener noreferrer">![Maven Central KMP](https://img.shields.io/badge/Maven%20Central-1.0.0--beta.8-blue?logo=apache-maven)</a> |
+
+**View the code on GitHub (Open-Source)** 
+
+<a href="https://github.com/DeveloperChunk/JetCo" target="_blank" rel="noopener noreferrer">![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-black?logo=github&logoColor=white)</a>
+
+JetCo is your go-to library for effortlessly adding complex yet elegant UI components into your Android apps and KMP projects. ✨ Forget the headaches of custom implementations — JetCo's got your back with everything from beautiful charts to customizable components, all in just a few lines of code. 💻
 
 ---
 
@@ -18,6 +25,7 @@ JetCo currently offers a growing lineup of snazzy UI components to make your app
 | **Extended Column Bar Chart** | Take your bar charts to the next level with advanced features. 🔥                            |
 | **Group Column Bar Chart**    | Compare multiple data sets side by side. 🤓                                                  |
 | **TicketCard**                | Custom ticket-style card with cutout arcs, dashed dividers, and flexible slots. 🎟️          |
+| **CurvedCard**                | Elegant curved cards with wave animations and customizable backgrounds. 🃏                   |
 | **VerticalStepper**           | A vertical timeline/stepper with titles, descriptions, and optional images in each node. ⬇️ |
 | **HorizontalStepper**         | A clean and simple horizontal stepper for progress or timeline representation. ➡️           |
 | **CompactHorizontalStepper**  | A minimal, icon-only horizontal stepper for compact UIs (great for mobile). ⚡               |
@@ -85,12 +93,24 @@ Check out the examples below to see JetCo in action!
     <p>TicketCard</p>
   </div>
   <div class="image-container">
+    <img src="https://raw.githubusercontent.com/developerchunk/JetCo/refs/heads/main/assets/images/curvedCard-1.png" alt="CurvedCard"/>
+    <p>CurvedCard</p>
+  </div>
+  <div class="image-container">
+    <img src="https://raw.githubusercontent.com/developerchunk/JetCo/refs/heads/main/assets/images/curvedCard-2.gif" alt="CurvedCard Animation"/>
+    <p>CurvedCard Animation</p>
+  </div>
+  <div class="image-container">
     <img src="https://github.com/developerchunk/JetCo/blob/main/assets/images/vertical-stepper.png?raw=true" alt="VerticalStepper"/>
     <p>VerticalStepper</p>
   </div>
   <div class="image-container">
-    <img src="https://github.com/developerchunk/JetCo/blob/main/assets/images/horizontal-stepper.png?raw=true" alt="HorizontalStepper"/>
-    <p>HorizontalStepper & CompactHorizontalStepper</p>
+    <img src="https://raw.githubusercontent.com/developerchunk/JetCo/refs/heads/main/assets/images/HorizontalStepper.png" alt="HorizontalStepper"/>
+    <p>HorizontalStepper</p>
+  </div>
+  <div class="image-container">
+    <img src="https://raw.githubusercontent.com/developerchunk/JetCo/refs/heads/main/assets/images/CompactHorizontalStepper.png" alt="CompactHorizontalStepper"/>
+    <p>CompactHorizontalStepper</p>
   </div>
 </div>
 
@@ -134,4 +154,6 @@ For more details on how to make the most out of JetCo, dive into our [Sample](/s
 Feel like giving back to the JetCo community? Join us! Check out the [Community](/community) section to see how you can contribute to the library and make it even better. 👩‍💻👨‍💻
 
 ---
+
+*Made with ❤️ by the team behind [JetCo](https://github.com/DeveloperChunk/JetCo)*
 

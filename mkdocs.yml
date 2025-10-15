@@ -1,7 +1,6 @@
 site_name: JetCo
 site_url: https://jetco.developerstring.com/
 site_dir: .
-# site_url: https://github.com/developerchunk/jetco
 repo_url: https://github.com/developerchunk/JetCo
 repo_name: developerchunk/JetCo
 
@@ -9,31 +8,11 @@ nav:
   - Home: index.md
   - Guide:
     - Overview: guide/jetco-ui/jetco-ui.md
-    - Bar Charts:
-      - charts:
-        - Column Bar Chart: guide/jetco-ui/Bar Chart/ColumnBarChart.md
-        - Extended Column Bar Chart: guide/jetco-ui/Bar Chart/ExtendedColumnBarChart.md
-        - Group Column Bar Chart: guide/jetco-ui/Bar Chart/GroupColumnBarChart.md
-      - Configuration:
-        - Config: guide/jetco-ui/Bar Chart/config/BarChartConfig.md
-        - Defaults: guide/jetco-ui/Bar Chart/config/BarChartDefaults.md
-      - Components: guide/jetco-ui/Bar Chart/components.md
-      - Models: guide/jetco-ui/Bar Chart/models.md
-    - Pie Chart:
-      - Pie Chart: guide/jetco-ui/Pie Chart/PieChart.md
-      - Configurations: guide/jetco-ui/Pie Chart/PieChartConfigurations.md
-      - Defaults: guide/jetco-ui/Pie Chart/PieChartDefaults.md
-    - Ticket Card:
-      - Overview: guide/jetco-ui/Ticket Card/TicketCard.md
-      - Components: guide/jetco-ui/Ticket Card/TicketContent.md
-      - Models: guide/jetco-ui/Ticket Card/TicketCardCorner.md
-    - Steppers:
-      - Vertical Stepper: guide/jetco-ui/Steppers/VerticalStepper.md
-      - Horizontal Stepper: guide/jetco-ui/Steppers/HorizontalStepper.md
-      - Compact Horizontal Stepper: guide/jetco-ui/Steppers/CompactHorizontalStepper.md
-      - Configuration:
-        - Stepper Config: guide/jetco-ui/Steppers/config/StepperConfig.md
-        - Stepper Models: guide/jetco-ui/Steppers/config/StepperModels.md
+    - Bar Charts: guide/jetco-ui/Bar Chart/ColumnBarChart.md
+    - Pie Chart: guide/jetco-ui/Pie Chart/PieChart.md
+    - Ticket Card: guide/jetco-ui/Ticket Card/TicketCard.md
+    - Curved Card: guide/jetco-ui/Curved Card/CurvedCard.md
+    - Steppers: guide/jetco-ui/Steppers/VerticalStepper.md
   - Sample:
     - JetCo-UI: sample/jetco-ui.md
   - Community: community.md
