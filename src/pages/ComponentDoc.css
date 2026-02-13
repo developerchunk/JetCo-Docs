@@ -1,0 +1,153 @@
+.component-doc {
+  max-width: 100%;
+}
+
+/* Header */
+.cd-header {
+  margin-bottom: 1.5rem;
+}
+
+.cd-header .badge {
+  margin-bottom: 0.5rem;
+}
+
+.cd-title {
+  margin-top: 0.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.cd-desc {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* Image */
+.cd-image {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-secondary);
+  overflow: hidden;
+  margin: 1.5rem 0;
+  background: var(--bg-tertiary);
+  max-width: 500px;
+}
+
+.cd-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cd-image-todo {
+  border-radius: var(--radius-lg);
+  border: 2px dashed var(--border-primary);
+  padding: 2.5rem;
+  text-align: center;
+  margin: 1.5rem 0;
+  color: var(--text-tertiary);
+  font-size: 0.9rem;
+  max-width: 500px;
+}
+
+/* Import */
+.cd-import-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 0.8rem 0 1.5rem;
+}
+
+.cd-import-block {
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-md);
+  padding: 0.6rem 0.8rem;
+  background: var(--bg-code);
+  overflow-x: auto;
+}
+
+.cd-import-label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  margin-bottom: 0.25rem;
+}
+
+.cd-import-block code {
+  font-size: 0.78rem;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+/* Config sections */
+.cd-config-section {
+  margin-bottom: 1.5rem;
+}
+
+.cd-config-section h3 {
+  font-size: 1.05rem;
+  color: var(--accent);
+}
+
+/* Related */
+.cd-related {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-secondary);
+}
+
+.cd-related h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  margin: 0 0 0.6rem;
+}
+
+.cd-related-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.badge--link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.badge--link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+.cd-ref-link {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.4rem;
+  color: var(--text-tertiary);
+  vertical-align: middle;
+  transition: color var(--transition-fast);
+}
+
+.cd-ref-link:hover {
+  color: var(--accent);
+}
+
+/* Not found */
+.cd-not-found {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cd-import-grid {
+    grid-template-columns: 1fr;
+  }
+}
