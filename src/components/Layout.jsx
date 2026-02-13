@@ -5,6 +5,7 @@ import ThemeCustomizer from './ThemeCustomizer'
 import PatternBackground from './PatternBackground'
 import WelcomeModal from './WelcomeModal'
 import Footer from './Footer'
+import Search from './Search'
 import navigation from '../data/navigation'
 import './Layout.css'
 
@@ -119,8 +120,12 @@ function Header({ onMenuToggle, menuOpen, themeCustomizerOpen, onThemeCustomizer
         </NavLink>
       </nav>
 
+      <div className="header__search">
+        <Search />
+      </div>
+
       <div className="header__right">
-        <span className="badge">v1.0.0-beta.10</span>
+        <span className="badge">v1.1.0-beta</span>
         <a
           href="https://github.com/developerchunk/JetCo"
           target="_blank"

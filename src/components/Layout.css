@@ -77,6 +77,12 @@
   background: color-mix(in srgb, var(--accent) 10%, transparent);
 }
 
+.header__search {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 1rem;
+}
+
 .header__right {
   display: flex;
   align-items: center;
@@ -315,6 +321,10 @@
   }
 
   .header__nav {
+    display: none;
+  }
+
+  .header__search {
     display: none;
   }
 

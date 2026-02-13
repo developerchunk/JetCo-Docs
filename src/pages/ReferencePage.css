@@ -263,6 +263,9 @@
   font-size: 0.82rem;
   font-weight: 500;
   color: var(--accent);
+  background: var(--accent-light);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
 }
 
 .ref-prop-type {
@@ -270,12 +273,18 @@
   font-size: 0.8rem;
   color: var(--text-secondary);
   white-space: nowrap;
+  background: var(--bg-secondary);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
 }
 
 .ref-prop-default {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.78rem;
   color: var(--text-tertiary);
+  background: var(--bg-secondary);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
 }
 
 .ref-type-link {

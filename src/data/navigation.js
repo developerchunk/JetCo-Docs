@@ -52,17 +52,6 @@ const navigation = [
     ],
   },
   {
-    title: 'Configuration',
-    collapsible: true,
-    items: [
-      { label: 'Bar Chart Defaults', path: '/components/bar-chart-defaults' },
-      { label: 'Line Graph Defaults', path: '/components/line-graph-defaults' },
-      { label: 'Candlestick Defaults', path: '/components/candlestick-defaults' },
-      { label: 'Pie Chart Defaults', path: '/components/pie-chart-defaults' },
-      { label: 'Picker Defaults', path: '/components/picker-defaults' },
-    ],
-  },
-  {
     title: 'Reference',
     collapsible: true,
     items: [
