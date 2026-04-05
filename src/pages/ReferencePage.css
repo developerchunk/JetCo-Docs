@@ -320,6 +320,28 @@
   transform: translateX(4px);
 }
 
+.ref-related-hint {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.ref-related-hint:not(:first-of-type) {
+  margin-top: 1rem;
+}
+
+.ref-related-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ref-related-link--api {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.82rem;
+}
+
 /* Back Link */
 .ref-back-link {
   display: inline-flex;
