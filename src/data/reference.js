@@ -3128,6 +3128,700 @@ data class PickerDateRange(
       { name: 'endDate', type: 'PickerDate', default: '—', description: 'End date of the range.' },
     ],
   },
+
+  /* ══════════════════════════════════════════════════════
+   *  FAB – FabMainConfig
+   * ══════════════════════════════════════════════════════ */
+  FabMainConfig: {
+    name: 'FabMainConfig',
+    kind: 'data class',
+    category: 'Components',
+    subcategory: 'Floating Action Button',
+    description:
+      'Central configuration for RadialFloatingActionButton, StackFloatingActionButton, and MorphFloatingActionButton: main button style, radial/stack/morph layout, and animation (transitions + stagger).',
+    relatedComponents: [
+      'radial-floating-action-button',
+      'stack-floating-action-button',
+      'morph-floating-action-button',
+    ],
+    relatedReferenceClasses: ['FabButtonTransition', 'FabItemTransition'],
+    android: {
+      packageName: 'com.developerstring.jetco.ui.components.button.fab.model',
+      annotations: ['@Stable'],
+      imports: [
+        'import androidx.compose.foundation.layout.PaddingValues',
+        'import androidx.compose.foundation.shape.CircleShape',
+        'import androidx.compose.foundation.shape.RoundedCornerShape',
+        'import androidx.compose.runtime.Stable',
+        'import androidx.compose.ui.graphics.Color',
+        'import androidx.compose.ui.graphics.Shape',
+        'import androidx.compose.ui.unit.Dp',
+        'import androidx.compose.ui.unit.dp',
+        'import com.developerstring.jetco.ui.components.button.fab.transition.FabButtonTransition',
+        'import com.developerstring.jetco.ui.components.button.fab.transition.FabItemTransition',
+      ],
+      sourceCode: `@Stable
+data class FabMainConfig(
+    val buttonStyle: ButtonStyle = ButtonStyle(),
+    val itemArrangement: ItemArrangement = ItemArrangement(),
+    val animation: Animation = Animation()
+) {
+
+    sealed interface Orientation {
+        data class Radial(
+            val arc: Arc = Arc.END,
+            val radius: Dp = 80.dp
+        ) : Orientation {
+            enum class Arc(val start: Double, val end: Double) {
+                END(90.0, 180.0),
+                START(90.0, 0.0),
+                CENTER(0.0, 180.0)
+            }
+        }
+
+        data class Stack(
+            val spacedBy: Dp = 40.dp,
+            val spacingPadding: Dp = 24.dp
+        ) : Orientation
+
+        data class Morph(
+            val columns: Int = 2,
+            val spacedBy: Dp = 12.dp,
+            val headerSpace: Dp = 20.dp,
+            val width: Dp = 250.dp,
+            val cardShape: Shape = RoundedCornerShape(24.dp)
+        ) : Orientation
+    }
+
+    @Stable
+    open class Animation(
+        val itemEnterOrder: StaggerOrder = StaggerOrder.FIFO,
+        val itemExitOrder: StaggerOrder = StaggerOrder.FILO,
+        val itemEnterTransition: FabItemTransition = FabItemTransition.Slide() + FabItemTransition.Fade(),
+        val itemExitTransition: FabItemTransition = FabItemTransition.Slide() + FabItemTransition.Fade(),
+        val buttonEnterTransition: FabButtonTransition = FabButtonTransition.Rotate(45f),
+        val buttonExitTransition: FabButtonTransition = FabButtonTransition.Rotate(0f),
+        val itemEnterDelay: Long = 300L,
+    )
+
+    @Stable
+    enum class StaggerOrder {
+        FIFO,
+        FILO,
+        ALL;
+    }
+
+    @Stable
+    data class ButtonStyle(
+        val color: Color = Color(0xFF1976D2),
+        val shape: Shape = CircleShape,
+        val size: Dp = 72.dp,
+        val iconRotation: Float = 45f,
+        val padding: PaddingValues = PaddingValues()
+    )
+
+    @Stable
+    data class ItemArrangement(
+        val radial: Orientation.Radial = Orientation.Radial(),
+        val stack: Orientation.Stack = Orientation.Stack(),
+        val morph: Orientation.Morph = Orientation.Morph()
+    )
+}`,
+    },
+    kmp: {
+      packageName: 'com.developerstring.jetco_kmp.components.button.fab.model',
+      annotations: ['@Stable'],
+      imports: [
+        'import androidx.compose.foundation.layout.PaddingValues',
+        'import androidx.compose.foundation.shape.CircleShape',
+        'import androidx.compose.foundation.shape.RoundedCornerShape',
+        'import androidx.compose.runtime.Stable',
+        'import androidx.compose.ui.graphics.Color',
+        'import androidx.compose.ui.graphics.Shape',
+        'import androidx.compose.ui.unit.Dp',
+        'import androidx.compose.ui.unit.dp',
+        'import com.developerstring.jetco_kmp.components.button.fab.transition.FabButtonTransition',
+        'import com.developerstring.jetco_kmp.components.button.fab.transition.FabItemTransition',
+      ],
+      sourceCode: `@Stable
+data class FabMainConfig(
+    val buttonStyle: ButtonStyle = ButtonStyle(),
+    val itemArrangement: ItemArrangement = ItemArrangement(),
+    val animation: Animation = Animation()
+) {
+
+    sealed interface Orientation {
+        data class Radial(
+            val arc: Arc = Arc.END,
+            val radius: Dp = 80.dp
+        ) : Orientation {
+            enum class Arc(val start: Double, val end: Double) {
+                END(90.0, 180.0),
+                START(90.0, 0.0),
+                CENTER(0.0, 180.0)
+            }
+        }
+
+        data class Stack(
+            val spacedBy: Dp = 40.dp,
+            val spacingPadding: Dp = 24.dp
+        ) : Orientation
+
+        data class Morph(
+            val columns: Int = 2,
+            val spacedBy: Dp = 12.dp,
+            val headerSpace: Dp = 20.dp,
+            val width: Dp = 250.dp,
+            val cardShape: Shape = RoundedCornerShape(24.dp)
+        ) : Orientation
+    }
+
+    @Stable
+    open class Animation(
+        val itemEnterOrder: StaggerOrder = StaggerOrder.FIFO,
+        val itemExitOrder: StaggerOrder = StaggerOrder.FILO,
+        val itemEnterTransition: FabItemTransition = FabItemTransition.Slide() + FabItemTransition.Fade(),
+        val itemExitTransition: FabItemTransition = FabItemTransition.Slide() + FabItemTransition.Fade(),
+        val buttonEnterTransition: FabButtonTransition = FabButtonTransition.Rotate(45f),
+        val buttonExitTransition: FabButtonTransition = FabButtonTransition.Rotate(0f),
+        val itemEnterDelay: Long = 300L,
+    )
+
+    @Stable
+    enum class StaggerOrder {
+        FIFO,
+        FILO,
+        ALL;
+    }
+
+    @Stable
+    data class ButtonStyle(
+        val color: Color = Color(0xFF1976D2),
+        val shape: Shape = CircleShape,
+        val size: Dp = 72.dp,
+        val iconRotation: Float = 45f,
+        val padding: PaddingValues = PaddingValues()
+    )
+
+    @Stable
+    data class ItemArrangement(
+        val radial: Orientation.Radial = Orientation.Radial(),
+        val stack: Orientation.Stack = Orientation.Stack(),
+        val morph: Orientation.Morph = Orientation.Morph()
+    )
+}`,
+    },
+    properties: [
+      { name: 'buttonStyle', type: 'ButtonStyle', default: 'ButtonStyle()', description: 'Color, shape, size, iconRotation, and padding of the main FAB.' },
+      { name: 'itemArrangement', type: 'ItemArrangement', default: 'ItemArrangement()', description: 'Holds radial, stack, and morph presets; each variant reads its own slice.' },
+      { name: 'animation', type: 'Animation', default: 'Animation()', description: 'Stagger orders, FabItemTransition / FabButtonTransition pairs, and itemEnterDelay.' },
+    ],
+  },
+
+  FabItem: {
+    name: 'FabItem',
+    kind: 'data class',
+    category: 'Components',
+    subcategory: 'Floating Action Button',
+    description: 'Default sub-item model: onClick, optional icon, and per-item ButtonStyle.',
+    relatedComponents: [
+      'radial-floating-action-button',
+      'stack-floating-action-button',
+      'morph-floating-action-button',
+    ],
+    android: {
+      packageName: 'com.developerstring.jetco.ui.components.button.fab.model',
+      annotations: ['@Stable'],
+      imports: [
+        'import androidx.compose.foundation.shape.CircleShape',
+        'import androidx.compose.runtime.Stable',
+        'import androidx.compose.ui.graphics.Color',
+        'import androidx.compose.ui.graphics.Shape',
+        'import androidx.compose.ui.graphics.vector.ImageVector',
+        'import androidx.compose.ui.unit.Dp',
+        'import androidx.compose.ui.unit.dp',
+      ],
+      sourceCode: `@Stable
+data class FabItem(
+    val onClick: () -> Unit,
+    val icon: ImageVector? = null,
+    val buttonStyle: ButtonStyle = ButtonStyle()
+) {
+    @Stable
+    data class ButtonStyle(
+        val color: Color = Color(0xFF1976D2),
+        val shape: Shape = CircleShape,
+        val size: Dp = 52.dp
+    )
+}`,
+    },
+    kmp: {
+      packageName: 'com.developerstring.jetco_kmp.components.button.fab.model',
+      annotations: ['@Stable'],
+      imports: [
+        'import androidx.compose.foundation.shape.CircleShape',
+        'import androidx.compose.runtime.Stable',
+        'import androidx.compose.ui.graphics.Color',
+        'import androidx.compose.ui.graphics.Shape',
+        'import androidx.compose.ui.graphics.vector.ImageVector',
+        'import androidx.compose.ui.unit.Dp',
+        'import androidx.compose.ui.unit.dp',
+      ],
+      sourceCode: `@Stable
+data class FabItem(
+    val onClick: () -> Unit,
+    val icon: ImageVector? = null,
+    val buttonStyle: ButtonStyle = ButtonStyle()
+) {
+    @Stable
+    data class ButtonStyle(
+        val color: Color = Color(0xFF1976D2),
+        val shape: Shape = CircleShape,
+        val size: Dp = 52.dp
+    )
+}`,
+    },
+    properties: [
+      { name: 'onClick', type: '() -> Unit', default: '—', description: 'Invoked when the item is clicked.' },
+      { name: 'icon', type: 'ImageVector?', default: 'null', description: 'Icon shown in DefaultFabItem.' },
+      { name: 'buttonStyle', type: 'ButtonStyle', default: 'ButtonStyle()', description: 'Background color, shape, and size for this item.' },
+    ],
+  },
+
+  FabButtonTransition: {
+    name: 'FabButtonTransition',
+    kind: 'class',
+    category: 'Components',
+    subcategory: 'Floating Action Button',
+    description: 'Animates the main FAB on expand/collapse (offset, scale, rotation, color). Combine with +; chain with then.',
+    relatedComponents: [
+      'radial-floating-action-button',
+      'stack-floating-action-button',
+      'morph-floating-action-button',
+    ],
+    android: {
+      packageName: 'com.developerstring.jetco.ui.components.button.fab.transition',
+      annotations: [],
+      imports: [],
+      sourceCode: `class FabButtonTransition(
+    val offset: OffsetTransition? = null,
+    val scale: ScaleTransition? = null,
+    val rotation: RotateTransition? = null,
+    val color: ColorTransition? = null,
+    val then: FabButtonTransition? = null
+) {
+    operator fun plus(other: FabButtonTransition): FabButtonTransition = FabButtonTransition(
+        offset = other.offset ?: this.offset,
+        scale = other.scale ?: this.scale,
+        rotation = other.rotation ?: this.rotation,
+        color = other.color ?: this.color,
+        then = other.then ?: this.then
+    )
+
+    companion object {
+        fun SlideTo(
+            x: Dp = 0.dp,
+            y: Dp = 0.dp,
+            stiffness: Float = Spring.StiffnessMediumLow,
+            dampingRatio: Float = Spring.DampingRatioMediumBouncy,
+            then: FabButtonTransition? = null
+        ): FabButtonTransition
+
+        fun Scale(
+            scale: Float,
+            stiffness: Float = Spring.StiffnessMediumLow,
+            dampingRatio: Float = Spring.DampingRatioMediumBouncy,
+            then: FabButtonTransition? = null
+        ): FabButtonTransition
+
+        fun Rotate(
+            rotation: Float,
+            stiffness: Float = Spring.StiffnessMediumLow,
+            dampingRatio: Float = Spring.DampingRatioMediumBouncy,
+            then: FabButtonTransition? = null
+        ): FabButtonTransition
+
+        fun ColorTo(
+            color: Color,
+            durationMillis: Int = 300,
+            easing: Easing = FastOutSlowInEasing,
+            then: FabButtonTransition? = null
+        ): FabButtonTransition
+    }
+}`,
+    },
+    kmp: {
+      packageName: 'com.developerstring.jetco_kmp.components.button.fab.transition',
+      annotations: [],
+      imports: [],
+      sourceCode: `class FabButtonTransition(
+    val offset: OffsetTransition? = null,
+    val scale: ScaleTransition? = null,
+    val rotation: RotateTransition? = null,
+    val color: ColorTransition? = null,
+    val then: FabButtonTransition? = null
+) {
+    operator fun plus(other: FabButtonTransition): FabButtonTransition = FabButtonTransition(
+        offset = other.offset ?: this.offset,
+        scale = other.scale ?: this.scale,
+        rotation = other.rotation ?: this.rotation,
+        color = other.color ?: this.color,
+        then = other.then ?: this.then
+    )
+
+    companion object {
+        fun SlideTo(
+            x: Dp = 0.dp,
+            y: Dp = 0.dp,
+            stiffness: Float = Spring.StiffnessMediumLow,
+            dampingRatio: Float = Spring.DampingRatioMediumBouncy,
+            then: FabButtonTransition? = null
+        ): FabButtonTransition
+
+        fun Scale(
+            scale: Float,
+            stiffness: Float = Spring.StiffnessMediumLow,
+            dampingRatio: Float = Spring.DampingRatioMediumBouncy,
+            then: FabButtonTransition? = null
+        ): FabButtonTransition
+
+        fun Rotate(
+            rotation: Float,
+            stiffness: Float = Spring.StiffnessMediumLow,
+            dampingRatio: Float = Spring.DampingRatioMediumBouncy,
+            then: FabButtonTransition? = null
+        ): FabButtonTransition
+
+        fun ColorTo(
+            color: Color,
+            durationMillis: Int = 300,
+            easing: Easing = FastOutSlowInEasing,
+            then: FabButtonTransition? = null
+        ): FabButtonTransition
+    }
+}`,
+    },
+    properties: [
+      { name: 'offset', type: 'OffsetTransition?', default: 'null', description: 'Translation animation for the main button.' },
+      { name: 'scale', type: 'ScaleTransition?', default: 'null', description: 'Scale animation.' },
+      { name: 'rotation', type: 'RotateTransition?', default: 'null', description: 'Z-axis rotation in degrees.' },
+      { name: 'color', type: 'ColorTransition?', default: 'null', description: 'Background color tween.' },
+      { name: 'then', type: 'FabButtonTransition?', default: 'null', description: 'Transition to run after this one completes.' },
+    ],
+  },
+
+  FabItemTransition: {
+    name: 'FabItemTransition',
+    kind: 'class',
+    category: 'Components',
+    subcategory: 'Floating Action Button',
+    description: 'Animates sub-items when they enter or exit (slide, fade, scale, rotate). Combine with +.',
+    relatedComponents: [
+      'radial-floating-action-button',
+      'stack-floating-action-button',
+      'morph-floating-action-button',
+    ],
+    android: {
+      packageName: 'com.developerstring.jetco.ui.components.button.fab.transition',
+      annotations: [],
+      imports: [],
+      sourceCode: `class FabItemTransition(
+    val offsetSpec: AnimationSpec<Dp>? = null,
+    val alphaSpec: AnimationSpec<Float>? = null,
+    val scaleSpec: AnimationSpec<Float>? = null,
+    val rotate: RotateTransition? = null
+) {
+    operator fun plus(other: FabItemTransition): FabItemTransition = FabItemTransition(
+        offsetSpec = other.offsetSpec ?: this.offsetSpec,
+        alphaSpec = other.alphaSpec ?: this.alphaSpec,
+        scaleSpec = other.scaleSpec ?: this.scaleSpec,
+        rotate = other.rotate ?: this.rotate
+    )
+
+    companion object {
+        fun Slide(
+            stiffness: Float = Spring.StiffnessMedium,
+            dampingRatio: Float = Spring.DampingRatioMediumBouncy,
+        ): FabItemTransition
+
+        fun Fade(
+            durationMillis: Int = 300,
+            easing: Easing = FastOutSlowInEasing
+        ): FabItemTransition
+
+        fun SlideAndFade(
+            durationMillis: Int = 300,
+            easing: Easing = FastOutSlowInEasing,
+            stiffness: Float = Spring.StiffnessMedium,
+            dampingRatio: Float = Spring.DampingRatioMediumBouncy,
+        ): FabItemTransition
+
+        fun Scale(
+            stiffness: Float = Spring.StiffnessMedium,
+            dampingRatio: Float = Spring.DampingRatioMediumBouncy,
+        ): FabItemTransition
+
+        fun Rotate(
+            target: Float,
+            stiffness: Float = Spring.StiffnessMedium,
+            dampingRatio: Float = Spring.DampingRatioMediumBouncy,
+        ): FabItemTransition
+    }
+}`,
+    },
+    kmp: {
+      packageName: 'com.developerstring.jetco_kmp.components.button.fab.transition',
+      annotations: [],
+      imports: [],
+      sourceCode: `class FabItemTransition(
+    val offsetSpec: AnimationSpec<Dp>? = null,
+    val alphaSpec: AnimationSpec<Float>? = null,
+    val scaleSpec: AnimationSpec<Float>? = null,
+    val rotate: RotateTransition? = null
+) {
+    operator fun plus(other: FabItemTransition): FabItemTransition = FabItemTransition(
+        offsetSpec = other.offsetSpec ?: this.offsetSpec,
+        alphaSpec = other.alphaSpec ?: this.alphaSpec,
+        scaleSpec = other.scaleSpec ?: this.scaleSpec,
+        rotate = other.rotate ?: this.rotate
+    )
+
+    companion object {
+        fun Slide(
+            stiffness: Float = Spring.StiffnessMedium,
+            dampingRatio: Float = Spring.DampingRatioMediumBouncy,
+        ): FabItemTransition
+
+        fun Fade(
+            durationMillis: Int = 300,
+            easing: Easing = FastOutSlowInEasing
+        ): FabItemTransition
+
+        fun SlideAndFade(
+            durationMillis: Int = 300,
+            easing: Easing = FastOutSlowInEasing,
+            stiffness: Float = Spring.StiffnessMedium,
+            dampingRatio: Float = Spring.DampingRatioMediumBouncy,
+        ): FabItemTransition
+
+        fun Scale(
+            stiffness: Float = Spring.StiffnessMedium,
+            dampingRatio: Float = Spring.DampingRatioMediumBouncy,
+        ): FabItemTransition
+
+        fun Rotate(
+            target: Float,
+            stiffness: Float = Spring.StiffnessMedium,
+            dampingRatio: Float = Spring.DampingRatioMediumBouncy,
+        ): FabItemTransition
+    }
+}`,
+    },
+    properties: [
+      { name: 'offsetSpec', type: 'AnimationSpec<Dp>?', default: 'null', description: 'Movement along the offset animation path.' },
+      { name: 'alphaSpec', type: 'AnimationSpec<Float>?', default: 'null', description: 'Opacity animation.' },
+      { name: 'scaleSpec', type: 'AnimationSpec<Float>?', default: 'null', description: 'Uniform scale animation.' },
+      { name: 'rotate', type: 'RotateTransition?', default: 'null', description: 'Rotation animation for the item.' },
+    ],
+  },
+
+  StackExpandOffset: {
+    name: 'StackExpandOffset',
+    kind: 'data class',
+    category: 'Components',
+    subcategory: 'Floating Action Button',
+    description: 'Reported by StackFloatingActionButton.onExpandChange so you can offset sibling content when the stack opens.',
+    relatedComponent: 'stack-floating-action-button',
+    android: {
+      packageName: 'com.developerstring.jetco.ui.components.button.fab.model',
+      annotations: [],
+      imports: [
+        'import androidx.compose.ui.unit.Dp',
+        'import androidx.compose.ui.unit.dp',
+      ],
+      sourceCode: `data class StackExpandOffset(
+    val offsetY: Dp = 0.dp,
+    val offsetX: Dp = 0.dp
+)`,
+    },
+    kmp: {
+      packageName: 'com.developerstring.jetco_kmp.components.button.fab.model',
+      annotations: [],
+      imports: [
+        'import androidx.compose.ui.unit.Dp',
+        'import androidx.compose.ui.unit.dp',
+      ],
+      sourceCode: `data class StackExpandOffset(
+    val offsetY: Dp = 0.dp,
+    val offsetX: Dp = 0.dp
+)`,
+    },
+    properties: [
+      { name: 'offsetY', type: 'Dp', default: '0.dp', description: 'Suggested vertical shift for content above the FAB.' },
+      { name: 'offsetX', type: 'Dp', default: '0.dp', description: 'Suggested horizontal shift when items expand sideways.' },
+    ],
+  },
+
+  StackDirection: {
+    name: 'StackDirection',
+    kind: 'enum class',
+    category: 'Components',
+    subcategory: 'Floating Action Button',
+    description: 'Per-item expansion direction for StackFabItem and StackFloatingActionButton custom items.',
+    relatedComponent: 'stack-floating-action-button',
+    android: {
+      packageName: 'com.developerstring.jetco.ui.components.button.fab.model',
+      annotations: [],
+      imports: [],
+      sourceCode: `enum class StackDirection {
+    TOP,
+    START,
+    END
+}`,
+    },
+    kmp: {
+      packageName: 'com.developerstring.jetco_kmp.components.button.fab.model',
+      annotations: [],
+      imports: [],
+      sourceCode: `enum class StackDirection {
+    TOP,
+    START,
+    END
+}`,
+    },
+    properties: [
+      { name: 'TOP', type: 'StackDirection', default: '—', description: 'Items expand upward from the main FAB.' },
+      { name: 'START', type: 'StackDirection', default: '—', description: 'Items expand to the left (LTR).' },
+      { name: 'END', type: 'StackDirection', default: '—', description: 'Items expand to the right (LTR).' },
+    ],
+  },
+
+  MorphFabItem: {
+    name: 'MorphFabItem',
+    kind: 'class',
+    category: 'Components',
+    subcategory: 'Floating Action Button',
+    description: 'Wrapper for a custom composable in MorphFloatingActionButton (custom overload).',
+    relatedComponent: 'morph-floating-action-button',
+    android: {
+      packageName: 'com.developerstring.jetco.ui.components.button.fab.model',
+      annotations: ['@Stable'],
+      imports: ['import androidx.compose.runtime.Composable', 'import androidx.compose.runtime.Stable'],
+      sourceCode: `@Stable
+class MorphFabItem(
+    val content: @Composable () -> Unit
+)`,
+    },
+    kmp: {
+      packageName: 'com.developerstring.jetco_kmp.components.button.fab.model',
+      annotations: ['@Stable'],
+      imports: ['import androidx.compose.runtime.Composable', 'import androidx.compose.runtime.Stable'],
+      sourceCode: `@Stable
+class MorphFabItem(
+    val content: @Composable () -> Unit
+)`,
+    },
+    properties: [
+      { name: 'content', type: '@Composable () -> Unit', default: '—', description: 'Composable cell in the morph card grid.' },
+    ],
+  },
+
+  RadialFabItem: {
+    name: 'RadialFabItem',
+    kind: 'class',
+    category: 'Components',
+    subcategory: 'Floating Action Button',
+    description: 'Wrapper for a custom composable in RadialFloatingActionButton (custom overload).',
+    relatedComponent: 'radial-floating-action-button',
+    android: {
+      packageName: 'com.developerstring.jetco.ui.components.button.fab.model',
+      annotations: ['@Stable'],
+      imports: ['import androidx.compose.runtime.Composable', 'import androidx.compose.runtime.Stable'],
+      sourceCode: `@Stable
+class RadialFabItem(
+    val content: @Composable () -> Unit
+)`,
+    },
+    kmp: {
+      packageName: 'com.developerstring.jetco_kmp.components.button.fab.model',
+      annotations: ['@Stable'],
+      imports: ['import androidx.compose.runtime.Composable', 'import androidx.compose.runtime.Stable'],
+      sourceCode: `@Stable
+class RadialFabItem(
+    val content: @Composable () -> Unit
+)`,
+    },
+    properties: [
+      { name: 'content', type: '@Composable () -> Unit', default: '—', description: 'Composable placed along the radial arc.' },
+    ],
+  },
+
+  StackFabItem: {
+    name: 'StackFabItem',
+    kind: 'class',
+    category: 'Components',
+    subcategory: 'Floating Action Button',
+    description: 'Custom stack item with direction (TOP, START, END) for StackFloatingActionButton.',
+    relatedComponent: 'stack-floating-action-button',
+    android: {
+      packageName: 'com.developerstring.jetco.ui.components.button.fab.model',
+      annotations: ['@Stable'],
+      imports: ['import androidx.compose.runtime.Composable', 'import androidx.compose.runtime.Stable'],
+      sourceCode: `@Stable
+class StackFabItem(
+    val direction: StackDirection = StackDirection.TOP,
+    val content: @Composable () -> Unit
+)`,
+    },
+    kmp: {
+      packageName: 'com.developerstring.jetco_kmp.components.button.fab.model',
+      annotations: ['@Stable'],
+      imports: ['import androidx.compose.runtime.Composable', 'import androidx.compose.runtime.Stable'],
+      sourceCode: `@Stable
+class StackFabItem(
+    val direction: StackDirection = StackDirection.TOP,
+    val content: @Composable () -> Unit
+)`,
+    },
+    properties: [
+      { name: 'direction', type: 'StackDirection', default: 'TOP', description: 'Which axis this item expands along.' },
+      { name: 'content', type: '@Composable () -> Unit', default: '—', description: 'Composable for this stack slot.' },
+    ],
+  },
+
+  MorphCardScope: {
+    name: 'MorphCardScope',
+    kind: 'class',
+    category: 'Components',
+    subcategory: 'Floating Action Button',
+    description: 'Receiver for the optional card lambda in MorphFloatingActionButton; call MorphItems() to insert the built-in item grid.',
+    relatedComponent: 'morph-floating-action-button',
+    android: {
+      packageName: 'com.developerstring.jetco.ui.components.button.fab.scope',
+      annotations: [],
+      imports: ['import androidx.compose.runtime.Composable'],
+      sourceCode: `class MorphCardScope(
+    internal val itemsContent: @Composable () -> Unit
+) {
+    @Composable
+    fun MorphItems() = itemsContent()
+}`,
+    },
+    kmp: {
+      packageName: 'com.developerstring.jetco_kmp.components.button.fab.scope',
+      annotations: [],
+      imports: ['import androidx.compose.runtime.Composable'],
+      sourceCode: `class MorphCardScope(
+    internal val itemsContent: @Composable () -> Unit
+) {
+    @Composable
+    fun MorphItems() = itemsContent()
+}`,
+    },
+    properties: [
+      { name: 'MorphItems', type: 'Composable', default: '—', description: 'Renders the FlowRow of morph items inside your custom card.' },
+    ],
+  },
 }
 
 /* ── Helper: get all classes as sorted array ── */

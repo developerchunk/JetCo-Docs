@@ -23,6 +23,9 @@ const featured = [
   // Buttons & Interactions
   'switch-button',
   'animated-search-bar',
+  'radial-floating-action-button',
+  'stack-floating-action-button',
+  'morph-floating-action-button',
   // Pickers
   'wheel-date-picker',
   'wheel-time-picker',

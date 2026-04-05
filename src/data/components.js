@@ -1878,6 +1878,438 @@ fun CompactStepperExample() {
     ],
   },
 
+  'radial-floating-action-button': {
+    name: 'RadialFloatingActionButton',
+    category: 'Components',
+    description:
+      'Expands sub-actions along a configurable arc (radius and Arc.END / START / CENTER). Use List<FabItem> or custom List<RadialFabItem> overloads. Shares FabMainConfig, FabItem, and transition types with other FAB variants.',
+    image: img('fab_radial.gif'),
+    androidImport: 'com.developerstring.jetco.ui.components.button.fab.RadialFloatingActionButton',
+    kmpImport: 'com.developerstring.jetco_kmp.components.button.fab.RadialFloatingActionButton',
+    params: [
+      { name: 'expanded', type: 'Boolean', default: '—', description: 'Whether the radial menu is expanded.' },
+      { name: 'items', type: 'List<FabItem> or List<RadialFabItem>', default: '—', description: 'Sub-FAB entries; use RadialFabItem overload for fully custom item composables.' },
+      { name: 'modifier', type: 'Modifier', default: 'Modifier', description: 'Modifier on the root container.' },
+      { name: 'onClick', type: '() -> Unit', default: '{}', description: 'Main FAB click; typically toggle expanded.' },
+      { name: 'config', type: 'FabMainConfig', default: 'FabMainConfig()', description: 'Use itemArrangement.radial for arc and radius; animation for button/item transitions.' },
+      { name: 'content', type: '@Composable () -> Unit', default: 'DefaultFloatingActionButton', description: 'Optional custom main FAB composable.' },
+    ],
+    codeExamples: {
+      android: `import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.unit.dp
+import com.developerstring.jetco.ui.components.button.fab.RadialFloatingActionButton
+import com.developerstring.jetco.ui.components.button.fab.model.FabItem
+import com.developerstring.jetco.ui.components.button.fab.model.FabMainConfig
+import com.developerstring.jetco.ui.components.button.fab.model.FabMainConfig.Orientation
+import com.developerstring.jetco.ui.components.button.fab.transition.FabButtonTransition
+import com.developerstring.jetco.ui.components.button.fab.transition.FabItemTransition
+
+@Composable
+fun RadialFabExample() {
+    var expanded by remember { mutableStateOf(false) }
+
+    RadialFloatingActionButton(
+        expanded = expanded,
+        onClick = { expanded = !expanded },
+        items = listOf(
+            FabItem(
+                onClick = { expanded = false },
+                icon = Icons.Outlined.Home,
+                buttonStyle = FabItem.ButtonStyle(size = 56.dp)
+            ),
+            FabItem(
+                onClick = { expanded = false },
+                icon = Icons.Outlined.Edit,
+                buttonStyle = FabItem.ButtonStyle(size = 56.dp)
+            ),
+            FabItem(
+                onClick = { expanded = false },
+                icon = Icons.Outlined.Share,
+                buttonStyle = FabItem.ButtonStyle(size = 56.dp)
+            )
+        ),
+        config = FabMainConfig(
+            buttonStyle = FabMainConfig.ButtonStyle(size = 72.dp),
+            itemArrangement = FabMainConfig.ItemArrangement(
+                radial = Orientation.Radial(
+                    arc = Orientation.Radial.Arc.END,
+                    radius = 120.dp
+                )
+            ),
+            animation = FabMainConfig.Animation(
+                itemEnterTransition = FabItemTransition.Slide() + FabItemTransition.Fade(),
+                buttonEnterTransition = FabButtonTransition.Rotate(45f),
+                buttonExitTransition = FabButtonTransition.Rotate(0f)
+            )
+        )
+    )
+}`,
+      kmp: `import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.unit.dp
+import com.developerstring.jetco_kmp.components.button.fab.RadialFloatingActionButton
+import com.developerstring.jetco_kmp.components.button.fab.model.FabItem
+import com.developerstring.jetco_kmp.components.button.fab.model.FabMainConfig
+import com.developerstring.jetco_kmp.components.button.fab.model.FabMainConfig.Orientation
+import com.developerstring.jetco_kmp.components.button.fab.transition.FabButtonTransition
+import com.developerstring.jetco_kmp.components.button.fab.transition.FabItemTransition
+
+@Composable
+fun RadialFabExample() {
+    var expanded by remember { mutableStateOf(false) }
+
+    RadialFloatingActionButton(
+        expanded = expanded,
+        onClick = { expanded = !expanded },
+        items = listOf(
+            FabItem(
+                onClick = { expanded = false },
+                icon = Icons.Outlined.Home,
+                buttonStyle = FabItem.ButtonStyle(size = 56.dp)
+            )
+        ),
+        config = FabMainConfig(
+            buttonStyle = FabMainConfig.ButtonStyle(size = 72.dp),
+            itemArrangement = FabMainConfig.ItemArrangement(
+                radial = Orientation.Radial(
+                    arc = Orientation.Radial.Arc.END,
+                    radius = 120.dp
+                )
+            ),
+            animation = FabMainConfig.Animation(
+                itemEnterTransition = FabItemTransition.Slide() + FabItemTransition.Fade(),
+                buttonEnterTransition = FabButtonTransition.Rotate(45f),
+                buttonExitTransition = FabButtonTransition.Rotate(0f)
+            )
+        )
+    )
+}`,
+    },
+    relatedConfigs: [
+      'FabMainConfig',
+      'FabItem',
+      'FabButtonTransition',
+      'FabItemTransition',
+      'RadialFabItem',
+    ],
+    configDetails: [
+      {
+        name: 'FabMainConfig',
+        params: [
+          { name: 'buttonStyle', type: 'ButtonStyle', default: 'ButtonStyle()', description: 'Main FAB: color, shape, size, padding.' },
+          { name: 'itemArrangement', type: 'ItemArrangement', default: 'ItemArrangement()', description: 'Use radial for arc and radius; stack and morph fields are ignored by this composable.' },
+          { name: 'animation', type: 'Animation', default: 'Animation()', description: 'Stagger orders, item/button transitions, itemEnterDelay.' },
+        ],
+      },
+      {
+        name: 'FabItem',
+        params: [
+          { name: 'onClick', type: '() -> Unit', default: '—', description: 'Called when the sub-item is pressed.' },
+          { name: 'icon', type: 'ImageVector?', default: 'null', description: 'Icon for DefaultFabItem.' },
+          { name: 'buttonStyle', type: 'ButtonStyle', default: 'ButtonStyle()', description: 'Per-item color, shape, size.' },
+        ],
+      },
+      {
+        name: 'RadialFabItem',
+        params: [
+          { name: 'content', type: '@Composable () -> Unit', default: '—', description: 'Fully custom composable for one slot along the radial arc. Use with the List<RadialFabItem> overload of RadialFloatingActionButton.' },
+        ],
+      },
+    ],
+  },
+
+  'stack-floating-action-button': {
+    name: 'StackFloatingActionButton',
+    category: 'Components',
+    description:
+      'Expands items in a linear stack (above or to the sides). Supports List<FabItem> or List<StackFabItem> for per-item direction. onExpandChange reports StackExpandOffset to push surrounding content.',
+    image: img('fab_stack.gif'),
+    androidImport: 'com.developerstring.jetco.ui.components.button.fab.StackFloatingActionButton',
+    kmpImport: 'com.developerstring.jetco_kmp.components.button.fab.StackFloatingActionButton',
+    params: [
+      { name: 'expanded', type: 'Boolean', default: '—', description: 'Whether the stack menu is expanded.' },
+      { name: 'items', type: 'List<FabItem> or List<StackFabItem>', default: '—', description: 'Sub-FABs; StackFabItem sets TOP / START / END per item.' },
+      { name: 'modifier', type: 'Modifier', default: 'Modifier', description: 'Modifier on the root container.' },
+      { name: 'onClick', type: '() -> Unit', default: '{}', description: 'Main FAB click; typically toggle expanded.' },
+      { name: 'onExpandChange', type: '(StackExpandOffset) -> Unit', default: '{}', description: 'Dispatches suggested offset so you can shift list or scaffold content when open.' },
+      { name: 'config', type: 'FabMainConfig', default: 'FabMainConfig()', description: 'Use itemArrangement.stack for spacedBy and spacingPadding.' },
+      { name: 'content', type: '@Composable () -> Unit', default: 'DefaultFloatingActionButton', description: 'Optional custom main FAB composable.' },
+    ],
+    codeExamples: {
+      android: `import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.Share
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.unit.dp
+import com.developerstring.jetco.ui.components.button.fab.StackFloatingActionButton
+import com.developerstring.jetco.ui.components.button.fab.model.FabItem
+import com.developerstring.jetco.ui.components.button.fab.model.FabMainConfig
+import com.developerstring.jetco.ui.components.button.fab.model.FabMainConfig.Orientation
+import com.developerstring.jetco.ui.components.button.fab.transition.FabButtonTransition
+import com.developerstring.jetco.ui.components.button.fab.transition.FabItemTransition
+
+@Composable
+fun StackFabExample() {
+    var expanded by remember { mutableStateOf(false) }
+
+    StackFloatingActionButton(
+        expanded = expanded,
+        onClick = { expanded = !expanded },
+        onExpandChange = { /* use offsets to shift content */ },
+        items = listOf(
+            FabItem(onClick = { expanded = false }, icon = Icons.Outlined.Share),
+            FabItem(onClick = { expanded = false }, icon = Icons.Outlined.Favorite)
+        ),
+        config = FabMainConfig(
+            itemArrangement = FabMainConfig.ItemArrangement(
+                stack = Orientation.Stack(spacedBy = 16.dp)
+            ),
+            animation = FabMainConfig.Animation(
+                itemEnterTransition = FabItemTransition.SlideAndFade() + FabItemTransition.Scale(),
+                buttonEnterTransition = FabButtonTransition.Rotate(45f),
+                buttonExitTransition = FabButtonTransition.Rotate(0f)
+            )
+        )
+    )
+}`,
+      kmp: `import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.Share
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.unit.dp
+import com.developerstring.jetco_kmp.components.button.fab.StackFloatingActionButton
+import com.developerstring.jetco_kmp.components.button.fab.model.FabItem
+import com.developerstring.jetco_kmp.components.button.fab.model.FabMainConfig
+import com.developerstring.jetco_kmp.components.button.fab.model.FabMainConfig.Orientation
+import com.developerstring.jetco_kmp.components.button.fab.transition.FabButtonTransition
+import com.developerstring.jetco_kmp.components.button.fab.transition.FabItemTransition
+
+@Composable
+fun StackFabExample() {
+    var expanded by remember { mutableStateOf(false) }
+
+    StackFloatingActionButton(
+        expanded = expanded,
+        onClick = { expanded = !expanded },
+        onExpandChange = { /* use offsets to shift content */ },
+        items = listOf(
+            FabItem(onClick = { expanded = false }, icon = Icons.Outlined.Share),
+            FabItem(onClick = { expanded = false }, icon = Icons.Outlined.Favorite)
+        ),
+        config = FabMainConfig(
+            itemArrangement = FabMainConfig.ItemArrangement(
+                stack = Orientation.Stack(spacedBy = 16.dp)
+            ),
+            animation = FabMainConfig.Animation(
+                itemEnterTransition = FabItemTransition.SlideAndFade() + FabItemTransition.Scale(),
+                buttonEnterTransition = FabButtonTransition.Rotate(45f),
+                buttonExitTransition = FabButtonTransition.Rotate(0f)
+            )
+        )
+    )
+}`,
+    },
+    relatedConfigs: [
+      'FabMainConfig',
+      'FabItem',
+      'FabButtonTransition',
+      'FabItemTransition',
+      'StackExpandOffset',
+      'StackDirection',
+      'StackFabItem',
+    ],
+    configDetails: [
+      {
+        name: 'FabMainConfig',
+        params: [
+          { name: 'buttonStyle', type: 'ButtonStyle', default: 'ButtonStyle()', description: 'Main FAB: color, shape, size, padding.' },
+          { name: 'itemArrangement', type: 'ItemArrangement', default: 'ItemArrangement()', description: 'Use stack for spacedBy and spacingPadding (used in StackExpandOffset).' },
+          { name: 'animation', type: 'Animation', default: 'Animation()', description: 'Stagger orders, item/button transitions, itemEnterDelay.' },
+        ],
+      },
+      {
+        name: 'FabItem',
+        params: [
+          { name: 'onClick', type: '() -> Unit', default: '—', description: 'Called when the sub-item is pressed.' },
+          { name: 'icon', type: 'ImageVector?', default: 'null', description: 'Icon for DefaultFabItem.' },
+          { name: 'buttonStyle', type: 'ButtonStyle', default: 'ButtonStyle()', description: 'Per-item color, shape, size.' },
+        ],
+      },
+      {
+        name: 'StackFabItem',
+        params: [
+          { name: 'direction', type: 'StackDirection', default: 'TOP', description: 'TOP expands above the main FAB; START and END expand to the sides (relative to the FAB anchor).' },
+          { name: 'content', type: '@Composable () -> Unit', default: '—', description: 'Custom composable for this stack slot. Use with the List<StackFabItem> overload when you need mixed directions or non-default UI.' },
+        ],
+      },
+      {
+        name: 'StackExpandOffset',
+        params: [
+          { name: 'offsetY', type: 'Dp', default: '0.dp', description: 'Vertical displacement to apply to surrounding content when stack expands.' },
+          { name: 'offsetX', type: 'Dp', default: '0.dp', description: 'Horizontal displacement for push layout.' },
+        ],
+      },
+    ],
+  },
+
+  'morph-floating-action-button': {
+    name: 'MorphFloatingActionButton',
+    category: 'Components',
+    description:
+      'Morphs the main FAB into a card with a grid of actions (FlowRow). Configure columns, width, and card shape via FabMainConfig.itemArrangement.morph. Optional card lambda receives MorphCardScope (use MorphItems() for the default grid).',
+    image: img('fab_morph.gif'),
+    androidImport: 'com.developerstring.jetco.ui.components.button.fab.MorphFloatingActionButton',
+    kmpImport: 'com.developerstring.jetco_kmp.components.button.fab.MorphFloatingActionButton',
+    params: [
+      { name: 'expanded', type: 'Boolean', default: '—', description: 'Whether the card is shown / FAB is in expanded state.' },
+      { name: 'items', type: 'List<FabItem> or List<MorphFabItem>', default: '—', description: 'Grid cells; MorphFabItem overload for fully custom cells.' },
+      { name: 'modifier', type: 'Modifier', default: 'Modifier', description: 'Modifier on the root container.' },
+      { name: 'onClick', type: '() -> Unit', default: '{}', description: 'Main FAB or close action on the card.' },
+      { name: 'config', type: 'FabMainConfig', default: 'FabMainConfig()', description: 'Use itemArrangement.morph for columns, spacing, width, cardShape.' },
+      { name: 'content', type: '@Composable () -> Unit', default: 'DefaultFloatingActionButton', description: 'Collapsed FAB content.' },
+      { name: 'card', type: 'MorphCardScope.() -> Unit', default: 'DefaultMorphCard', description: 'Expanded card shell; call MorphCardScope.MorphItems() for the item grid.' },
+    ],
+    codeExamples: {
+      android: `import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Edit
+import androidx.compose.material.icons.outlined.Share
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.unit.dp
+import com.developerstring.jetco.ui.components.button.fab.MorphFloatingActionButton
+import com.developerstring.jetco.ui.components.button.fab.model.FabItem
+import com.developerstring.jetco.ui.components.button.fab.model.FabMainConfig
+import com.developerstring.jetco.ui.components.button.fab.model.FabMainConfig.Orientation
+import com.developerstring.jetco.ui.components.button.fab.transition.FabButtonTransition
+import com.developerstring.jetco.ui.components.button.fab.transition.FabItemTransition
+
+@Composable
+fun MorphFabExample() {
+    var expanded by remember { mutableStateOf(false) }
+
+    MorphFloatingActionButton(
+        expanded = expanded,
+        onClick = { expanded = !expanded },
+        items = listOf(
+            FabItem(onClick = { expanded = false }, icon = Icons.Outlined.Edit),
+            FabItem(onClick = { expanded = false }, icon = Icons.Outlined.Share)
+        ),
+        config = FabMainConfig(
+            itemArrangement = FabMainConfig.ItemArrangement(
+                morph = Orientation.Morph(
+                    columns = 2,
+                    spacedBy = 12.dp,
+                    width = 240.dp,
+                    cardShape = RoundedCornerShape(24.dp)
+                )
+            ),
+            animation = FabMainConfig.Animation(
+                itemEnterTransition = FabItemTransition.Scale() + FabItemTransition.Fade(),
+                itemEnterDelay = 50L,
+                buttonEnterTransition = FabButtonTransition.SlideTo(x = -(50).dp) + FabButtonTransition.Scale(2f),
+                buttonExitTransition = FabButtonTransition.SlideTo() + FabButtonTransition.Scale(1f)
+            )
+        )
+    )
+}`,
+      kmp: `import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Edit
+import androidx.compose.material.icons.outlined.Share
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.unit.dp
+import com.developerstring.jetco_kmp.components.button.fab.MorphFloatingActionButton
+import com.developerstring.jetco_kmp.components.button.fab.model.FabItem
+import com.developerstring.jetco_kmp.components.button.fab.model.FabMainConfig
+import com.developerstring.jetco_kmp.components.button.fab.model.FabMainConfig.Orientation
+import com.developerstring.jetco_kmp.components.button.fab.transition.FabButtonTransition
+import com.developerstring.jetco_kmp.components.button.fab.transition.FabItemTransition
+
+@Composable
+fun MorphFabExample() {
+    var expanded by remember { mutableStateOf(false) }
+
+    MorphFloatingActionButton(
+        expanded = expanded,
+        onClick = { expanded = !expanded },
+        items = listOf(
+            FabItem(onClick = { expanded = false }, icon = Icons.Outlined.Edit),
+            FabItem(onClick = { expanded = false }, icon = Icons.Outlined.Share)
+        ),
+        config = FabMainConfig(
+            itemArrangement = FabMainConfig.ItemArrangement(
+                morph = Orientation.Morph(
+                    columns = 2,
+                    spacedBy = 12.dp,
+                    width = 240.dp,
+                    cardShape = RoundedCornerShape(24.dp)
+                )
+            ),
+            animation = FabMainConfig.Animation(
+                itemEnterTransition = FabItemTransition.Scale() + FabItemTransition.Fade(),
+                itemEnterDelay = 300L,
+                buttonEnterTransition = FabButtonTransition.Rotate(45f),
+                buttonExitTransition = FabButtonTransition.Rotate(0f)
+            )
+        )
+    )
+}`,
+    },
+    relatedConfigs: [
+      'FabMainConfig',
+      'FabItem',
+      'FabButtonTransition',
+      'FabItemTransition',
+      'MorphFabItem',
+      'MorphCardScope',
+    ],
+    configDetails: [
+      {
+        name: 'FabMainConfig',
+        params: [
+          { name: 'buttonStyle', type: 'ButtonStyle', default: 'ButtonStyle()', description: 'Main FAB: color, shape, size, padding.' },
+          { name: 'itemArrangement', type: 'ItemArrangement', default: 'ItemArrangement()', description: 'Use morph for columns, spacedBy, headerSpace, width, cardShape.' },
+          { name: 'animation', type: 'Animation', default: 'Animation()', description: 'Stagger orders, item/button transitions, itemEnterDelay.' },
+        ],
+      },
+      {
+        name: 'FabItem',
+        params: [
+          { name: 'onClick', type: '() -> Unit', default: '—', description: 'Called when the sub-item is pressed.' },
+          { name: 'icon', type: 'ImageVector?', default: 'null', description: 'Icon for DefaultFabItem.' },
+          { name: 'buttonStyle', type: 'ButtonStyle', default: 'ButtonStyle()', description: 'Per-item color, shape, size.' },
+        ],
+      },
+      {
+        name: 'MorphFabItem',
+        params: [
+          { name: 'content', type: '@Composable () -> Unit', default: '—', description: 'Fully custom composable for one cell in the morphed card grid. Use with the List<MorphFabItem> overload of MorphFloatingActionButton.' },
+        ],
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════
   //  PICKERS
   // ═══════════════════════════════════════════

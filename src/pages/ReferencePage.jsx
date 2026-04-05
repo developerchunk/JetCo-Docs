@@ -3,7 +3,14 @@ import { Highlight, themes } from 'prism-react-renderer'
 import { useTheme } from '../context/ThemeContext'
 import { usePlatform } from '../components/Layout'
 import { getClassById } from '../data/reference'
+import components from '../data/components'
 import './ReferencePage.css'
+
+function relatedComponentDocIds(cls) {
+  if (cls.relatedComponents?.length) return cls.relatedComponents
+  if (cls.relatedComponent) return [cls.relatedComponent]
+  return []
+}
 
 function AnnotationBadge({ name }) {
   const colorMap = {
@@ -200,16 +207,40 @@ export default function ReferencePage() {
         </section>
       )}
 
-      {/* Related Component Link */}
-      {cls.relatedComponent && (
+      {/* Related component guides & reference types */}
+      {(relatedComponentDocIds(cls).length > 0 || (cls.relatedReferenceClasses?.length ?? 0) > 0) && (
         <section className="ref-section">
           <h2 className="ref-section__title">Related Documentation</h2>
-          <Link to={`/components/${cls.relatedComponent}`} className="ref-related-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-            View {cls.subcategory} Documentation
-          </Link>
+          {relatedComponentDocIds(cls).length > 0 && (
+            <>
+              <p className="ref-related-hint">Component guides</p>
+              <div className="ref-related-list">
+                {relatedComponentDocIds(cls).map((id) => (
+                  <Link key={id} to={`/components/${id}`} className="ref-related-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                    {components[id]?.name ?? id}
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
+          {(cls.relatedReferenceClasses?.length ?? 0) > 0 && (
+            <>
+              <p className="ref-related-hint">API reference</p>
+              <div className="ref-related-list">
+                {cls.relatedReferenceClasses.map((name) => (
+                  <Link key={name} to={`/reference/${name}`} className="ref-related-link ref-related-link--api">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                    {name}
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
         </section>
       )}
     </div>
